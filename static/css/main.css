@@ -1,0 +1,27 @@
+.page_total {
+  padding: 0;
+  margin : 0 5px;
+  height : 30px;
+}
+
+.page_total input {
+  margin        : 0 3px;
+  width         : 35px;
+  text-align    : center;
+  vertical-align: middle;
+  margin-top    : -2px;
+  height        : 30px;
+  line-height   : 28px;
+  outline       : none;
+  max-height    : 30px;
+}
+
+.page_total label {
+  color         : #666;
+  font-weight   : inherit;
+  height        : 30px;
+  line-height   : 30px;
+  vertical-align: middle;
+  margin        : 0;
+  padding       : 0;
+}
