@@ -11,3 +11,15 @@ depts_list = [
 
 def index(request):
   return render(request, 'index.html', {'depts_list': depts_list})
+
+def menu(request):
+  return render(request, 'menu.html', {'depts_list': depts_list})
+
+def special(request):
+  return render(request, 'special.html', {'depts_list': depts_list})
+
+def about(request):
+  return render(request, 'about.html', {'depts_list': depts_list})
+
+def contact(request):
+  return render(request, 'contact.html', {'depts_list': depts_list})
