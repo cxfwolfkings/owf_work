@@ -5,8 +5,14 @@
 ## 目录
 
 1. [简介](#简介)
+
 2. 说明
+   
+   - [Python日期函数](#Python日期函数)
+   
    - [模型详解](#模型详解)
+   - [Django中条件过滤](#Django中条件过滤)
+   
 3. [展望](#展望)
 
 ## 简介
@@ -16,6 +22,28 @@
 
 
 ## 说明
+
+
+
+### Python日期函数
+
+```python
+import datetime
+now_time = datetime.datetime.now()  # 获取当前日期或者使用自定义日期
+day_num = now_time.isoweekday() # 是本周第几天，下标为0开始
+the_Sunday = now_time - datetime.timedelta(days=day_num)    # 本周周日
+the_Saturday = now_time + datetime.timedelta(days=6-day_num)    # 本周周六
+import datetime# 1. 获取「今天」
+today = datetime.date.today()# 2. 获取当前月的第一天
+first = today.replace(day=1)# 3. 减一天，得到上个月的最后一天
+last_month = first - datetime.timedelta(days=1)# 4. 格式化成指定形式
+print(last_month.strftime("%Y%m"))
+201807
+datetime.datetime.now().strftime("%Y")
+datetime.datetime(2019,2,2)
+datetime.datetime.strptime('2019-02','%Y-%m')
+datetime.datetime.strptime('2019-2','%Y-%m')
+```
 
 
 
@@ -55,9 +83,31 @@
 
 
 
+### Django中条件过滤
 
+```python
+import datetime
 
+now = datetime.datetime.now()  # 获取现在的时间
+start = datetime.timedelta(hours=23,minutes=59,seconds=59)   # 获取当前时间中的一天内的开始时间
 
+# 查询一天内的数据
+model.objects.filter(date_time_field__gt=start)
+
+'''
+也就这么多的东西，还有一些：
+gt: 大于
+gte: 大于等于
+lt: 小于
+lte: 小于等于
+'''
+
+# 那如果要查一个时间段呢？我们用 __range
+start = datetime.date(2018,7,12)
+end = datetime.date(2018,7,13)
+
+model.objects.filter(date_time_filed__range=(start,end))
+```
 
 
 

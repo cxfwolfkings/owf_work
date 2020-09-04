@@ -46,15 +46,79 @@ img {
   margin-bottom: 20px;
 }
 
-.nav a {
-  display: inline-block;
-  width  : 15%;
-  height: 30px;
-  line-height: 30px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #efd5a7;
+.nav>div {
+  width           : 15%;
+  display         : inline-block;
+  height          : 30px;
+  line-height     : 30px;
+  font-size       : 18px;
+  font-weight     : bold;
   background-color: peru;
+}
+
+.nav>div>a {
+  display    : block;
+  width      : 100%;
+  height     : 30px;
+  line-height: 30px;
+  color      : #efd5a7;
+}
+
+.nav>a {
+  display         : inline-block;
+  width           : 15%;
+  height          : 30px;
+  line-height     : 30px;
+  font-size       : 18px;
+  font-weight     : bold;
+  color           : #efd5a7;
+  background-color: peru;
+}
+
+.nav .dropdown-menu {
+  width           : 100%;
+  color           : #efd5a7;
+  background-color: peru;
+  font-size       : 16px;
+  padding         : 0px;
+}
+
+.nav .dropdown-menu li {
+  cursor     : pointer;
+  height     : 30px;
+  line-height: 30px;
+  display    : flex;
+}
+
+.nav .dropdown-menu li:hover {
+  background-color: chocolate;
+}
+
+.nav .open>a,
+.nav .open>a:focus,
+.nav .open>a:hover {
+  background-color: chocolate;
+}
+
+.nav .prefix {
+  display    : inline-block;
+  width      : 10%;
+  height     : 30px;
+  line-height: 30px;
+}
+
+.nav .sufix {
+  display    : inline-block;
+  width      : 10%;
+  height     : 30px;
+  line-height: 30px;
+}
+
+.nav .menuItem {
+  display    : inline-block;
+  width      : 70%;
+  height     : 30px;
+  line-height: 30px;
 }
 
 .coffee_index {
@@ -196,4 +260,22 @@ input.submit {
   vertical-align: middle;
   margin        : 0;
   padding       : 0;
+}
+
+.quick-list {
+  background: white;
+  font-size: 15px;
+}
+
+.quick-list .panel {
+  height: 100vh;
+  margin: 0px;
+}
+
+.quick-list .panel-heading {
+  font-weight: bold;
+}
+
+.panel-body-content {
+  margin: 15px 0px;
 }

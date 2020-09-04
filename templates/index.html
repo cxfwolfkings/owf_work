@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="max-age=200" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" type="text/css" href="/static/css/jquery.datepick.css" />
   <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
   <title>首页</title>
@@ -16,62 +15,47 @@
     <div align="center">
       <a href="work/index"><img src="/static/img/logo.gif" alt="logo" /></a>
       <div class="nav">
-        <a href="work/menu">Menu</a>
-        <a href="work/specials">Specials</a>
-        <a href="work/about">About</a>
-        <a href="work/contact">Contact</a>
+        <div class="dropdown">
+          <a id="dLabel" data-target="#" href="menu" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            Menu
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <li onclick="route('quickList')">
+              <div class="prefix"></div>
+              <div class="menuItem">快捷清单</div>
+              <div class="sufix"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></div>
+            </li>
+            <li>
+              <div class="prefix"></div>
+              <div class="menuItem">测试1</div>
+              <div class="sufix"></div>
+            </li>
+            <li>
+              <div class="prefix"></div>
+              <div class="menuItem">测试2</div>
+              <div class="sufix"></div>
+            </li>
+          </ul>
+        </div>
+        <a href="special">Specials</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
       </div>
       <img src="/static/img/coffee_index.jpg" alt="pic" class="coffee_index" />
       <div class="content">
         悠闲的午后，来杯香浓的咖啡😊<span class="small"><br />
-        即将进入奇幻的世界，准备好了吗？</span><br />
+          即将进入奇幻的世界，准备好了吗？</span><br />
         Let's Go...
       </div>
       <img src="/static/img/line.gif" alt="line" />
-      日期：<input type="text" name="txt-date" class="date" />
-      <br>
-      <div class="panel panel-default">
-        <div class="panel-heading">快捷清单</div>
-        <div class="panel-body">
-          <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
-        </div>
-      </div>
-      <h1>部门信息</h1>
-      <hr>
-      <table>
-        <tr>
-          <th>部门编号</th>
-          <th>部门名称</th>
-          <th>所在地</th>
-        </tr>
-        {% for dept in depts_list %}
-        <tr>
-          <td>{{ dept.no }}</td>
-          <td>{{ dept.name }}</td>
-          <td>{{ dept.location }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-      <div class="footer">Copyright © 2011 All Products Online Corporation. <br />All rights reserved</div>
+      <div class="footer">Copyright © 2020 All Products Online Corporation. <br />All rights reserved</div>
     </div>
   </div>
 </body>
 <script type="text/javascript" src="/static/js/jquery-2.2.3.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery.datepick.js"></script>
-<script type="text/javascript" src="/static/js/jquery.datepick-zh-CN.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/static/js/laypage.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-    $.browser = $.browser || {};
-    $('.date').datepick({ dateFormat: 'yy-mm-dd' });
-  });
-</script>
+<script type="text/javascript" src="/static/js/main.js"></script>
 
 </html>
