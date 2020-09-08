@@ -1,6 +1,7 @@
 <html>
 
 <head>
+  <title>单核工作法</title>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="max-age=200" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -14,8 +15,10 @@
     <div class="panel-heading">快捷清单</div>
     <div class="panel-body">
       <div class="panel-body-filter">
-        日期：<input type="text" name="txt-date" class="date" />
-        <button type="button" class="btn btn-success btn-sm">搜索</button>
+        <form action="quickList" method="GET">
+          日期：<input type="text" name="quickDate" class="date quick-date" />
+          <button type="submit" class="btn btn-success btn-sm btn-search">搜索</button>
+        </form>
       </div>
       <div class="panel-body-content">
         <ul class="list-group">

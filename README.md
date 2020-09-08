@@ -4,26 +4,16 @@
 
 ## 目录
 
-1. [简介](#简介)
-
-2. 说明
-   
-   - [Python日期函数](#Python日期函数)
-   
+1. [简介](简介)
+2. [说明](#说明)
+   - [Python日期函数](#python日期函数)
    - [模型详解](#模型详解)
-   - [Django中条件过滤](#Django中条件过滤)
-   
+   - [Django中条件过滤](#django中条件过滤)
 3. [展望](#展望)
 
 ## 简介
 
-
-
-
-
 ## 说明
-
-
 
 ### Python日期函数
 
@@ -37,15 +27,67 @@ import datetime# 1. 获取「今天」
 today = datetime.date.today()# 2. 获取当前月的第一天
 first = today.replace(day=1)# 3. 减一天，得到上个月的最后一天
 last_month = first - datetime.timedelta(days=1)# 4. 格式化成指定形式
+
+# 日期转字符串（格式化）
 print(last_month.strftime("%Y%m"))
+print(now_time.strftime('%Y-%m-%d'))
 201807
 datetime.datetime.now().strftime("%Y")
 datetime.datetime(2019,2,2)
+
+# 字符串转日期
 datetime.datetime.strptime('2019-02','%Y-%m')
 datetime.datetime.strptime('2019-2','%Y-%m')
+
+# 加一天，减一天
+import datetime
+print ((datetime.datetime.now()+datetime.timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S"))
+# 2019-03-29 17:25:19
+print ((datetime.datetime.now()+datetime.timedelta(days=-1)).strftime("%Y-%m-%d %H:%M:%S"))
+# 2019-03-27 17:26:23
+
+# 加一小时，减一小时
+import datetime
+print(type(datetime.datetime.now()))
+# <class 'datetime.datetime'>
+print((datetime.datetime.now()+datetime.timedelta(hours=1)).strftime("%H:%M:%S"))
+# 18:36:11
+print((datetime.datetime.now()+datetime.timedelta(hours=-1)).strftime("%H:%M:%S"))
+# 16:30:29
+
+# 获取当前日期
+import datetime
+print(type(date.today()))
+# <class 'datetime.date'>
+print(date.today())
+# 2019-03-28
+print(date.today() + datetime.timedelta(days=1))
+# 2019-03-29
+
+# 其它API
+now = datetime.now()
+# 获取当前时间  2019-03-28 17:22:51.750103
+dep = Department.query.get(1)
+# 获取对象
+start_time = dep.dormitory_start_time
+# 获取考勤开始时间
+end_time = dep.dormitory_end_time
+# 获取考勤结束时间
+manage_time = dep.instructor_manage_time
+# 获取考勤时长
+dor_att = DormitoryAttendance.query.order_by(-DormitoryAttendance.attendance_date).first().attendance_date
+# 获取最近一次的考勤日期 2019-03-29
+sd = "{} {}".format(dor_att.strftime("%Y-%m-%d"), start_time.strftime("%H:%M:%S"))
+# 拼接成字符串
+ed = "{} {}".format(dor_att.strftime("%Y-%m-%d"), end_time.strftime("%H:%M:%S"))
+# 拼接程字符串
+ed = datetime.strptime(ed, "%Y-%m-%d %H:%M:%S") + timedelta(hours=manage_time)
+# 把一个时间字符串解析为时间元组
+if (sd < now.strftime("%Y-%m-%d %H:%M:%S") < ed.strftime("%Y-%m-%d %H:%M:%S")) is False:
+  return jsonify(errno=RET.NODATA, errmsg="无数据", data={})
+if now.strftime("%Y-%m-%d") > dor_att.strftime("%Y-%m-%d"):
+  now = now + timedelta(days=-1)
 ```
-
-
 
 ### 模型详解
 
@@ -81,8 +123,6 @@ datetime.datetime.strptime('2019-2','%Y-%m')
 | URLField                   | 一个用于保存URL地址的字符串类型，默认最大长度200。           |
 | UUIDField                  | 用于保存通用唯一识别码（Universally Unique Identifier）的字段。使用Python的UUID类。在PostgreSQL数据库中保存为uuid类型，其它数据库中为char(32)。这个字段是自增主键的最佳替代品，后面有例子展示 |
 
-
-
 ### Django中条件过滤
 
 ```python
@@ -109,11 +149,4 @@ end = datetime.date(2018,7,13)
 model.objects.filter(date_time_filed__range=(start,end))
 ```
 
-
-
-
-
-
-
 ## 展望
-
