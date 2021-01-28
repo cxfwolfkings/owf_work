@@ -264,7 +264,7 @@ input.submit {
 
 .quick-list {
   background: white;
-  font-size: 15px;
+  font-size : 15px;
 }
 
 .quick-list .panel {
@@ -278,4 +278,27 @@ input.submit {
 
 .panel-body-content {
   margin: 15px 0px;
+}
+
+.list-group-item .item-title {
+  padding: 10px 15px;
+  background-color: #C9F0DD;
+}
+
+.item-title>div {
+  display: inline-block;
+}
+
+.item-title .item-name {
+  font-size  : 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.item-title .item-result {
+  float: right;
+}
+
+.list-group-item {
+  padding: 0px;
 }

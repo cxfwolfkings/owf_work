@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render
 from django.http import HttpResponse
 from work.models import QuickList
@@ -31,4 +32,4 @@ def quickList(request):
     dealTime__gte=today, dealTime__lte=tomorrow
   ).order_by('orderNo')
   # 返回视图 
-  return render(request, 'quickList.html', {'quickList': quickList})
+  return render(request, 'quickList.html', {'quickList': quickList, 'selectDay': today.strftime('%Y-%m-%d')})
